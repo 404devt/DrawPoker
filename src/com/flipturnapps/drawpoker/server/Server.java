@@ -1,4 +1,4 @@
-package com.flipturnapps.drawpoker.main;
+package com.flipturnapps.drawpoker.server;
 
 import java.io.IOException;
 import java.net.Socket;
