@@ -16,13 +16,6 @@ public class Server extends LightKCommandServer<Client>
 	}
 
 	@Override
-	protected void newMessage(String message, Client client) 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	protected Client getNewClientData(Socket socket, KServer<Client> kServer) 
 	{
 		// TODO Auto-generated method stub
