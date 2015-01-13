@@ -7,5 +7,8 @@ DrawPoker will consist of appoximately 3-7 players, a few game phases, and a sco
 ###Game Phases
 The game will alternate between two phases, a drawing phase and a guessing phase.
 ####Drawing Phase
-The game starts with a drawing phase. In this phase each player gets his or her own individual 
+The game starts with a drawing phase. In this phase each player gets his or her own individual topic to draw. All players simultaneously draw during the time limit. All drawings are saved as image files on the server.
+####Guessing Phase
+The guessing phase has as many turns as there are players. In the first turn, one of the player's drawings (selected randomly) is displayed to the group. Each player individually votes (1) what the 
 ###Scoring
+
