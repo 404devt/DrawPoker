@@ -1,7 +1,7 @@
 package com.flipturnapps.drawpoker.client;
 
+import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +25,7 @@ public class BackgroundImageSprite extends Sprite
 
 	public void updateImage(BufferedImage newImage)
 	{
+		
 		if(currImage != null)
 		{
 			
@@ -36,7 +37,9 @@ public class BackgroundImageSprite extends Sprite
 			}
 			flushCount++;
 		}
-		newImage = currImage;
+		currImage = newImage;
+		
+		
 	}
 	
 	public void undo()
@@ -50,7 +53,12 @@ public class BackgroundImageSprite extends Sprite
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			undoNum--;
+			flushCount--;
+		}
+		else
+		{
+			currImage = null;
+			
 		}
 	}
 	
@@ -58,7 +66,7 @@ public class BackgroundImageSprite extends Sprite
 	{
 		File imagePath = new File(FileHelper.getAppDataDir(Main.DEV_NAME, Main.APP_NAME)+"imageCache/");
 		imagePath.mkdirs();
-		imagePath = new File(imagePath.getAbsolutePath() + "img"+ count+".png");
+		imagePath = new File(imagePath.getAbsolutePath() + "/img"+ count+".png");
 		return imagePath;
 	}
 	
@@ -66,7 +74,7 @@ public class BackgroundImageSprite extends Sprite
 	protected void display(Graphics g, SpritePanel s) 
 	{
 		if(currImage != null)
-		g.drawImage(currImage,0,0,s.getWidth(),s.getHeight(),null);	
+		g.drawImage(currImage,0,0,s.getWidth(),s.getHeight(),null);
 	}
 	
 
