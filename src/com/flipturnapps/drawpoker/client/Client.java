@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import com.flipturnapps.kevinLibrary.command.Command;
 import com.flipturnapps.kevinLibrary.helper.ThreadHelper;
-import com.flipturnapps.kevinLibrary.net.KClient;
 import com.flipturnapps.kevinLibrary.net.LightKCommandClient;
 import com.flipturnapps.kevinLibrary.newgui.KDialog;
 
