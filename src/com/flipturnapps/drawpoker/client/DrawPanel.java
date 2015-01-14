@@ -104,10 +104,12 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable, A
 				e.printStackTrace();
 			}
 			this.refresh();
-			if(mouseDown)
+			if(mouseDown&&!((int)this.getMouseX()<15&&(int)this.getMouseY()<15))
 			{
 				this.add(new PaintballSprite((int)this.getMouseX(),(int)this.getMouseY(),brushSize,paintColor));
 			}
+			//this line has the pen cycle through colors
+			paintColor = new Color(Color.HSBtoRGB((float) (System.currentTimeMillis() % ((360*4000)+0.0)/4000), 1, 1));
 		}
 		
 	}

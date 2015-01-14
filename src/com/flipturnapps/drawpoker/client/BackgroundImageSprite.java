@@ -74,7 +74,7 @@ public class BackgroundImageSprite extends Sprite
 	protected void display(Graphics g, SpritePanel s) 
 	{
 		if(currImage != null)
-		g.drawImage(currImage,0,0,s.getWidth(),s.getHeight(),null);
+			g.drawImage(currImage,0,0,s.getWidth(),s.getHeight(),null);
 	}
 	
 
