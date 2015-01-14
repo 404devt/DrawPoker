@@ -14,7 +14,13 @@ After the subjects and the drawers of the drawings are revealed, each player's s
 * Guessing the correct subject of a drawing earns both the guesser and the drawer +1 point.
 * Guessing the correct drawer of a drawing lets the guesser steal 1 point from the drawer.
 * If all players correctly guess the drawer, they each steal an extra 1 point from the drawer.
+
 ###Winning
 After a preset number of complete rounds, the player with the most points wins.
 ##The code itself
 ###Networking Structure
+In DrawPoker, the serverside will have no GUI, and take no user input. Yet depending on the playing setting of the players involved, the game can be set up one of two ways.
+####Inidivual Screens
+In this mode, each player views his or her own screen to see the drawings during the guessing phase and to see the score tallies after each round. Each player's individual screen is also used for drawing and guessing.
+####TV Mode
+Here, a central screen (most likely a TV) will be visible to all players in the game. This is where the drawings during guessing phase and score modifications will appear for everyone to see. The players only use their individual screens for drawing and guessing.
