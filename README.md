@@ -25,4 +25,11 @@ In DrawPoker, the serverside will have no GUI, and take no user input. Yet depen
 In this mode, each player views his or her own screen to see the drawings during the guessing phase and to see the score tallies after each round. Each player's individual screen is also used for drawing and guessing.
 #####TV Mode
 Here, a central screen (most likely a TV) will be visible to all players in the game. This is where the drawings during guessing phase and score modifications will appear for everyone to see. The players only use their individual screens for drawing and guessing.
-####
+####Client Types
+Clients fall into certain categories, and the server treats them differently.
+#####TV Client
+This is only applicable in TV Mode, but because the server has no GUI and takes no input, a client can be initialized as a TV client, which cannot be an Admin client (see below). TV client is the type which is not a player in the game, its name cannot be set, cannot be admin, and has no score.
+#####Admin
+Admin is just like a normal client, is a player, has a configurable name/score, but also has special permissions. Admin configures game settings before the game starts, may approve other client's screen names, and has the permissions to kick clients.
+#####Normal Client
+A normal client is a regular player, has a configurable screen name and score, but has no special permissions. Most clients should fall under this category.
