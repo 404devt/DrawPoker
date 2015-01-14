@@ -2,13 +2,15 @@ package com.flipturnapps.drawpoker.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.util.Hashtable;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.border.LineBorder;
-import java.awt.Font;
+
+import com.flipturnapps.drawpoker.main.Main;
+import com.flipturnapps.kevinLibrary.helper.Numbers;
 
 public class DrawPanelWrapper extends JPanel {
 
@@ -33,17 +35,30 @@ public class DrawPanelWrapper extends JPanel {
 		slider.setMinimum(BRUSH_SLIDER_MIN);
 		slider.setMajorTickSpacing((int) ((sliderWidth+0.0)/(SLIDER_TICK_COUNT)));
 		slider.setValue((int) ((sliderWidth+0.0)/2+BRUSH_SLIDER_MIN));
-		Hashtable<Integer,JLabel> labelTable = new Hashtable<Integer,JLabel>();
-		labelTable.put( new Integer( BRUSH_SLIDER_MIN ), new JLabel("Thin") );
-		labelTable.put( new Integer( BRUSH_SLIDER_MAX ), new JLabel("Thick") );
-		labelTable.put( new Integer( slider.getValue() ), new JLabel("Medium") );
-		slider.setLabelTable(labelTable);
+		
 		
 		JLabel lblBrushWidth = new JLabel("Brush Width");
 		lblBrushWidth.setFont(new Font("Comic Neue", Font.BOLD, 14));
 		panel_option.add(lblBrushWidth);
 		panel_option.add(slider);
+		
+		JPanel panel_color = new JPanel();
+		add(panel_color, BorderLayout.SOUTH);
+		
+		for(int i = 0; i < Main.ALLOWED_COLORS.length; i++)
+		{
+			ColoredRadioButton btn = new ColoredRadioButton(Main.ALLOWED_COLORS[i]);
+			
+			panel_color.add(btn);
+			if(Math.random() < 0.6)
+				btn.setEnabled(false);
+			else
+				btn.setEnabled(true);
+		}
+		
+		
 
 	}
+	
 
 }
