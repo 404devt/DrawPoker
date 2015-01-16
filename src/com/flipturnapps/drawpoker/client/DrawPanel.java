@@ -5,17 +5,20 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
+import javax.swing.JSlider;
 import javax.swing.border.EtchedBorder;
 
 import com.flipturnapps.kevinLibrary.helper.ThreadHelper;
 import com.flipturnapps.kevinLibrary.sprite.SpritePanel;
 
-public class DrawPanel extends SpritePanel implements MouseListener, Runnable, ActionListener
+public class DrawPanel extends SpritePanel implements MouseListener, Runnable
 {
 	private static final Color COLOR_INIT = Color.blue;
 	private static final int SIZE_INIT = 15;
@@ -23,7 +26,8 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable, A
 	private Color paintColor;
 	private int brushSize;
 	private boolean mouseDown;
-	public DrawPanel() 
+	private JSlider slider;
+	public DrawPanel(JSlider slider) 
 	{
 		setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		setLayout(new FlowLayout());		
@@ -31,9 +35,7 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable, A
 		brushSize = SIZE_INIT;
 		background = new BackgroundImageSprite();
 		this.addMouseListener(this);
-		JButton b = new JButton("undo");
-		b.addActionListener(this);
-		this.add(b);
+		this.slider = slider;
 		new Thread(this).start();
 	}
 	
@@ -109,17 +111,24 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable, A
 				this.add(new PaintballSprite((int)this.getMouseX(),(int)this.getMouseY(),brushSize,paintColor));
 			}
 			//this line has the pen cycle through colors
-			paintColor = new Color(Color.HSBtoRGB((float) (System.currentTimeMillis() % ((360*4000)+0.0)/4000), 1, 1));
+			//paintColor = new Color(Color.HSBtoRGB((float) (System.currentTimeMillis() % ((360*4000)+0.0)/4000), 1, 1));
+			this.setBrushSize(slider.getValue());
 		}
 		
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) 
-	{
+
+	public void setPaintColor(Color mainColor) {
+		this.paintColor = mainColor;
+		
+	}
+
+	public void undo() {
 		background.undo();
 		
 	}
+
+	
 	
 
 }
