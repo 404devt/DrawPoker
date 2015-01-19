@@ -8,31 +8,39 @@ import com.flipturnapps.kevinLibrary.command.Command;
 import com.flipturnapps.kevinLibrary.net.KServer;
 import com.flipturnapps.kevinLibrary.net.LightKCommandServer;
 
-public class Server extends LightKCommandServer<Client> 
+public class Server extends LightKCommandServer<ServerClient> 
 {
-	public Server(int port, ArrayList<Command> up) throws IOException {
+	public Server(int port, ArrayList<Command> up) throws IOException 
+	{
 		super(port, up);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected Client getNewClientData(Socket socket, KServer<Client> kServer) 
+	protected ServerClient getNewClientData(Socket socket, KServer<ServerClient> kServer) 
 	{
-		// TODO Auto-generated method stub
+		try {
+			return new ServerClient(socket,kServer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("IO exception forced server to pass a null ServerClient to KServer!");
 		return null;
 	}
 
 	@Override
-	protected void newClient(Client data) 
+	protected void newClient(ServerClient data) 
 	{
-		// TODO Auto-generated method stub
-		
+		System.out.println("New client.");
 	}
 
 	@Override
-	public Object makeUpCommandData(Client clientData) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object makeUpCommandData(ServerClient clientData) 
+	{
+		ServerCommandData data = new ServerCommandData();
+		data.setClient(clientData);
+		data.setServer(this);
+		return data;
 	}
 
 }

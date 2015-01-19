@@ -3,19 +3,21 @@ package com.flipturnapps.drawpoker.server;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.HashMap;
 
 import com.flipturnapps.kevinLibrary.net.ClientData;
 import com.flipturnapps.kevinLibrary.net.KServer;
 
-public class Client extends ClientData 
+public class ServerClient extends ClientData 
 {
-private String screenName;
-private int score;
-private Image lastDrawing;
-	
-	public Client(Socket socket, KServer<?> server) throws IOException 
+	private String screenName;
+	private int score;
+	private Image lastDrawing;
+	private HashMap<String, String> clientValues;
+	public ServerClient(Socket socket, KServer<?> server) throws IOException 
 	{
-		super(socket, server);		
+		super(socket, server);	
+		clientValues = new HashMap<String,String>();
 	}
 
 	public String getScreenName() {
@@ -41,5 +43,11 @@ private Image lastDrawing;
 	public void setLastDrawing(Image lastDrawing) {
 		this.lastDrawing = lastDrawing;
 	}
+
+	public HashMap<String, String> getClientValuesMap() 
+	{
+		return clientValues;
+	}
+
 
 }

@@ -21,18 +21,13 @@ public class Main
 		new RadioButtonConstraints(KevinColor.kpink,Color.BLACK,"Pink"),
 		new RadioButtonConstraints(KevinColor.kpurple,Color.BLACK,"Purple"),
 		new RadioButtonConstraints(Color.BLACK,Color.BLACK,"Black"),
+		//new RadioButtonConstraints(Color.RED,Color.BLACK,"Rainbow"),
 		new RadioButtonConstraints(Color.CYAN,Color.BLACK,"Cyan")
 			};
 
 	public static void main (String[] args)
 	{
-		/*Uncomment to test DrawPanel
-		KJFrame frame = new KJFrame();
-		frame.getContentPane().add(new DrawPanel());
-		frame.setSize(new Dimension(500,500));
-		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-		*/
+		
 		KJFrame frame = new KJFrame();
 		frame.getContentPane().add(new DrawPanelWrapper());
 		frame.setSize(new Dimension(700,700));

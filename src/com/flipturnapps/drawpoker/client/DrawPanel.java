@@ -20,18 +20,18 @@ import com.flipturnapps.kevinLibrary.sprite.SpritePanel;
 
 public class DrawPanel extends SpritePanel implements MouseListener, Runnable
 {
-	private static final Color COLOR_INIT = Color.blue;
+	
 	private static final int SIZE_INIT = 15;
 	private BackgroundImageSprite background;
-	private Color paintColor;
+	private RadioButtonConstraints paintColorConstraints;
 	private int brushSize;
 	private boolean mouseDown;
 	private JSlider slider;
+	private Color paintColor;
 	public DrawPanel(JSlider slider) 
 	{
 		setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		setLayout(new FlowLayout());		
-		paintColor = COLOR_INIT;
+		setLayout(new FlowLayout());
 		brushSize = SIZE_INIT;
 		background = new BackgroundImageSprite();
 		this.addMouseListener(this);
@@ -50,10 +50,7 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable
 		this.add(background);
 	}
 	
-	public void setColor(Color c)
-	{
-		paintColor = c;
-	}
+	
 	
 	public void setBrushSize(int i)
 	{
@@ -97,6 +94,7 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable
 	{
 		ThreadHelper.sleep(500);
 		this.add(background);
+		long count = 0;
 		while(true)
 		{
 			try {
@@ -110,16 +108,21 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable
 			{
 				this.add(new PaintballSprite((int)this.getMouseX(),(int)this.getMouseY(),brushSize,paintColor));
 			}
-			//this line has the pen cycle through colors
-			//paintColor = new Color(Color.HSBtoRGB((float) (System.currentTimeMillis() % ((360*4000)+0.0)/4000), 1, 1));
+			if(this.paintColorConstraints.getText().equals("Rainbow"))
+			{
+				paintColor = new Color(Color.HSBtoRGB((float) (count % ((360*1000)+0.0)/1000), 1, 1));
+				if(mouseDown)
+				count++;
+			}
 			this.setBrushSize(slider.getValue());
 		}
 		
 	}
 
 
-	public void setPaintColor(Color mainColor) {
-		this.paintColor = mainColor;
+	public void setPaintColorConstraints(RadioButtonConstraints constraints) {
+		this.paintColorConstraints = constraints;
+		this.paintColor = this.paintColorConstraints.getMainColor();
 		
 	}
 
