@@ -20,7 +20,8 @@ public class Server extends LightKCommandServer<ServerClient>
 	{
 		try {
 			return new ServerClient(socket,kServer);
-		} catch (IOException e) 
+		} 
+		catch (IOException e) 
 		{
 			
 		}
@@ -41,6 +42,18 @@ public class Server extends LightKCommandServer<ServerClient>
 		data.setClient(clientData);
 		data.setServer(this);
 		return data;
+	}
+
+	public void runDownCommandAll(String... strings)
+	{
+		String commandString=strings[0];
+		for(int i = 1; i < strings.length; i++)
+		{
+			commandString += "~";
+			commandString += strings[i];
+		}
+		this.sendAll(commandString);
+		
 	}
 
 }
