@@ -20,9 +20,9 @@ public class Server extends LightKCommandServer<ServerClient>
 	{
 		try {
 			return new ServerClient(socket,kServer);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException e) 
+		{
+			
 		}
 		System.out.println("IO exception forced server to pass a null ServerClient to KServer!");
 		return null;
