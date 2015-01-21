@@ -1,5 +1,7 @@
 package com.flipturnapps.drawpoker.client;
 
+import com.flipturnapps.drawpoker.server.UpCommandSetValue;
+
 public class DownCommandGetValue extends DownCommand {
 
 	public static final String CALL_NAME = "getvalue";
@@ -24,7 +26,7 @@ public class DownCommandGetValue extends DownCommand {
 	@Override
 	protected void downCommandExecute(String[] params, ClientCommandData data) 
 	{
-		//todo
+		data.getClient().sendCommand(UpCommandSetValue.CALL_NAME,params[0],data.getValuesMap().get(params[0]));
 	}
 
 }

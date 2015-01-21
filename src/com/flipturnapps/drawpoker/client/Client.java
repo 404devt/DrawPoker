@@ -47,4 +47,15 @@ public class Client extends LightKCommandClient
 		this.values = values;
 	}
 
+	public void sendCommand(String...strings) 
+	{
+		String commandString=strings[0];
+		for(int i = 1; i < strings.length; i++)
+		{
+			commandString += "~";
+			commandString += strings[i];
+		}
+		this.sendMessage(commandString);		
+	}
+
 }
