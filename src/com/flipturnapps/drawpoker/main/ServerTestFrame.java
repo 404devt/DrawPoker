@@ -13,7 +13,7 @@ public class ServerTestFrame extends UserIOFrame implements Runnable
 	private Server server;
 	public ServerTestFrame(Server server) 
 	{
-		super("server");
+		super("server",false);
 		this.server = server;
 		thread = new Thread(this);
 		thread.start();

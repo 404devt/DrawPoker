@@ -64,6 +64,7 @@ public class Main
 	{
 		Scanner scan = new Scanner(System.in);
 		JFrame frame;
+		System.out.print("mode: ");
 		if(scan.nextLine().equals("server"))
 		{
 			Server server = null;

@@ -15,7 +15,7 @@ public class ClientTestFrame extends UserIOFrame implements Runnable
 
 	public ClientTestFrame(Client client) 
 	{
-		super("client");
+		super("client",false);
 		this.client = client;
 		thread = new Thread(this);
 		thread.start();
