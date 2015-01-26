@@ -16,7 +16,7 @@ public class ServerTest implements Runnable
 	@Override
 	public void run() 
 	{
-		while(server.getClientCount()<0)
+		while(server.getClientCount()<1)
 		{
 			ThreadHelper.sleep(100);
 		}

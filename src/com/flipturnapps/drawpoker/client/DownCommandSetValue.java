@@ -24,7 +24,7 @@ public class DownCommandSetValue extends DownCommand {
 	@Override
 	protected void downCommandExecute(String[] params, ClientCommandData data)
 	{
-		data.getValuesMap().put(params[0], params[0]);
+		data.getValuesMap().put(params[0], params[1]);
 	}
 
 }

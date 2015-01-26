@@ -45,6 +45,8 @@ public class Main
 		UP_COMMANDS = new ArrayList<Command>();
 		UP_COMMANDS.add(new UpCommandGetValue());
 		UP_COMMANDS.add(new UpCommandSetValue());
+		
+		
 		DOWN_COMMANDS = new ArrayList<Command>();
 		DOWN_COMMANDS.add(new DownCommandGetValue());
 		DOWN_COMMANDS.add(new DownCommandSetValue());

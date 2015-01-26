@@ -21,6 +21,7 @@ public class Client extends LightKCommandClient
 		//values.put("ctest", Math.random() + "");
 	}
 
+	
 	@Override
 	protected void disconnectedFromServer()
 	{
@@ -57,6 +58,13 @@ public class Client extends LightKCommandClient
 			commandString += strings[i];
 		}
 		this.sendMessage(commandString);		
+	}
+	
+	
+	public void readMessage(String s)
+	{
+		super.readMessage(s);
+		System.out.println(s);
 	}
 
 }
