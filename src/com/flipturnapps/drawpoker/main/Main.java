@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -65,6 +67,7 @@ public class Main
 		Scanner scan = new Scanner(System.in);
 		JFrame frame;
 		System.out.print("mode: ");
+		Runnable run;
 		if(scan.nextLine().equals("server"))
 		{
 			Server server = null;
@@ -74,7 +77,8 @@ public class Main
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			frame = new ServerTestFrame(server);
+			run = new ServerTest(server);
+			
 		}
 		else
 		{
@@ -88,10 +92,35 @@ public class Main
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			frame = new ClientTestFrame(client);
+			
+			run = new ClientTest(client);
 		}
-		frame.setVisible(true);
+		new Thread(run).start();
 		scan.close();
 		System.out.println("end");
+	}
+	public static String createHashmapTable(HashMap<String,String> map)
+	{
+		Iterator<String> iterator = map.keySet().iterator();
+		String[] keys = new String[map.keySet().size()];
+		int count = 0;
+		int maxLength = 0;
+		while(iterator.hasNext())
+		{
+			keys[count] = iterator.next();			
+			if(keys[count].length()>maxLength)
+			{
+				maxLength = count;
+			}
+			count++;
+		}
+		String ret = "";
+		for (int i = 0; i < keys.length; i++)
+		{
+			ret += String.format("%"+(maxLength+1)+"s %s", keys[i], map.get(keys[i
+			                                                                     ]));
+			ret += "\n";
+		}
+		return ret;
 	}
 }

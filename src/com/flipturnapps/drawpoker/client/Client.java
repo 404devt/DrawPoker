@@ -18,6 +18,7 @@ public class Client extends LightKCommandClient
 	{
 		super(ip, port, down);
 		values = new HashMap<String,String>();
+		//values.put("ctest", Math.random() + "");
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
 
+import com.flipturnapps.kevinLibrary.helper.Numbers;
 import com.flipturnapps.kevinLibrary.net.ClientData;
 import com.flipturnapps.kevinLibrary.net.KServer;
 
@@ -18,6 +19,8 @@ public class ServerClient extends ClientData
 	{
 		super(socket, server);	
 		clientValues = new HashMap<String,String>();
+		clientValues.put("stest",Math.random() + "");
+		
 	}
 
 	public String getScreenName() {
