@@ -13,7 +13,6 @@ public abstract class DownCommand extends SimpleCommand
 		return "DownCommnand named "+ getName();
 	}
 	
-
 	protected abstract void downCommandExecute(String[] params, ClientCommandData data);
 	
 	@Override

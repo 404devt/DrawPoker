@@ -4,11 +4,10 @@ import com.flipturnapps.drawpoker.client.DownCommandSetValue;
 
 public class UpCommandGetValue extends UpCommand {
 
-	public static final String CALL_NAME = "getvalue";
-	@Override
+
 	public String getName() 
 	{
-		return CALL_NAME;
+		return UpCommandGetValue.class.getSimpleName();
 	}
 
 	@Override
@@ -26,7 +25,7 @@ public class UpCommandGetValue extends UpCommand {
 	@Override
 	protected void upCommandExecute(String[] params, ServerCommandData data) 
 	{
-		data.getServer().runDownCommandAll(DownCommandSetValue.CALL_NAME, params[0], data.getClient().getClientValuesMap().get(params[0]));
+		data.getServer().runDownCommandAll(DownCommandSetValue.class.getSimpleName(), params[0], data.getClient().getClientValuesMap().get(params[0]));
 	}
 
 	

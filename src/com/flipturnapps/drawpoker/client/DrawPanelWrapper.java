@@ -12,10 +12,13 @@ import javax.swing.border.LineBorder;
 
 import com.flipturnapps.drawpoker.main.Main;
 import com.flipturnapps.kevinLibrary.helper.Numbers;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.HashMap;
 
 public class DrawPanelWrapper extends JPanel
 {
@@ -85,6 +88,11 @@ public class DrawPanelWrapper extends JPanel
 		
 
 	}
+	public void stopAll() 
+	{
+		draw.stopAll();		
+	}
+	
 	
 
 }

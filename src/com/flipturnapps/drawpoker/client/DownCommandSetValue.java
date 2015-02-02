@@ -2,11 +2,11 @@ package com.flipturnapps.drawpoker.client;
 
 public class DownCommandSetValue extends DownCommand {
 
-	public static final String CALL_NAME = "setvalue";
+	
 	@Override
 	public String getName() 
 	{
-		return CALL_NAME;
+		return DownCommandSetValue.class.getSimpleName();
 	}
 
 	@Override

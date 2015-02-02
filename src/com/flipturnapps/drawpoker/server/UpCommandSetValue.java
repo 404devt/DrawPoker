@@ -2,11 +2,10 @@ package com.flipturnapps.drawpoker.server;
 
 public class UpCommandSetValue extends UpCommand {
 
-	public static final String CALL_NAME = "setvalue";
-	@Override
+	
 	public String getName() 
 	{
-		return CALL_NAME;
+		return UpCommandSetValue.class.getSimpleName();
 	}
 
 	@Override

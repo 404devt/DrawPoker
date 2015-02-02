@@ -28,8 +28,10 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable
 	private boolean mouseDown;
 	private JSlider slider;
 	private Color paintColor;
+	private boolean notStop;
 	public DrawPanel(JSlider slider) 
 	{
+		notStop = true;
 		setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		setLayout(new FlowLayout());
 		brushSize = SIZE_INIT;
@@ -95,7 +97,7 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable
 		ThreadHelper.sleep(500);
 		this.add(background);
 		long count = 0;
-		while(true)
+		while(notStop)
 		{
 			try {
 				Thread.sleep(5);
@@ -129,6 +131,11 @@ public class DrawPanel extends SpritePanel implements MouseListener, Runnable
 	public void undo() {
 		background.undo();
 		
+	}
+
+	public void stopAll() 
+	{
+		notStop = false;		
 	}
 
 	

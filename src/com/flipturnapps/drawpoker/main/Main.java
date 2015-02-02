@@ -1,6 +1,7 @@
 package com.flipturnapps.drawpoker.main;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import javax.swing.JFrame;
 
 import com.flipturnapps.drawpoker.client.Client;
 import com.flipturnapps.drawpoker.client.DownCommandGetValue;
+import com.flipturnapps.drawpoker.client.DownCommandSetDrawPanelState;
 import com.flipturnapps.drawpoker.client.DownCommandSetValue;
 import com.flipturnapps.drawpoker.client.RadioButtonConstraints;
 import com.flipturnapps.drawpoker.server.Server;
@@ -28,6 +30,9 @@ public class Main
 	public static final RadioButtonConstraints[] ALLOWED_COLORS;
 	private static final ArrayList<Command> UP_COMMANDS;
 	private static final ArrayList<Command> DOWN_COMMANDS;
+	public static final Dimension DEFAULT_FRAME_DIMENSION = new Dimension(600,600);
+	public static final String DEFAULT_FRAME_TITLE = "DrawPoker - FlipTurnApps";
+	
 	static
 	{
 		ALLOWED_COLORS = new RadioButtonConstraints[]{
@@ -50,6 +55,7 @@ public class Main
 		DOWN_COMMANDS = new ArrayList<Command>();
 		DOWN_COMMANDS.add(new DownCommandGetValue());
 		DOWN_COMMANDS.add(new DownCommandSetValue());
+		DOWN_COMMANDS.add(new DownCommandSetDrawPanelState());
 	}
 
 	public static void main (String[] args)
@@ -61,6 +67,7 @@ public class Main
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		 */
+		System.out.println(new DownCommandSetDrawPanelState().getName());
 		new Main().testServerAndClient();
 		
 	}
@@ -112,15 +119,14 @@ public class Main
 			keys[count] = iterator.next();			
 			if(keys[count].length()>maxLength)
 			{
-				maxLength = count;
+				maxLength = keys[count].length();
 			}
 			count++;
 		}
 		String ret = "";
 		for (int i = 0; i < keys.length; i++)
 		{
-			ret += String.format("%"+(maxLength+1)+"s %s", keys[i], map.get(keys[i
-			                                                                     ]));
+			ret += String.format("%-"+(maxLength+1)+"s %s", keys[i], map.get(keys[i]));
 			ret += "\n";
 		}
 		return ret;

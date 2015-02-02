@@ -33,9 +33,7 @@ public class Client extends LightKCommandClient
 	@Override
 	public Object makeDownCommandData(String message) 
 	{
-		ClientCommandData data = new ClientCommandData();
-		data.setClient(this);
-		data.setValuesMap(getValuesMap());
+		ClientCommandData data = new ClientCommandData(this, getValuesMap());		
 		return data;
 	}
 
