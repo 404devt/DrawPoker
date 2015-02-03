@@ -6,16 +6,24 @@ public class ClientCommandData
 {
 	private Client client;
 	private HashMap<String,String> valuesMap;
-	public Client getClient() {
+	
+	public ClientCommandData(Client c,HashMap<String,String> values)
+	{
+		setClient(c);
+		setValuesMap(values);
+	}
+	
+	public Client getClient() 
+	{
 		return client;
 	}
-	public void setClient(Client client) {
+	private void setClient(Client client) {
 		this.client = client;
 	}
 	public HashMap<String,String> getValuesMap() {
 		return valuesMap;
 	}
-	public void setValuesMap(HashMap<String,String> valuesMap) {
+	private void setValuesMap(HashMap<String,String> valuesMap) {
 		this.valuesMap = valuesMap;
 	}
 }

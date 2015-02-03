@@ -18,8 +18,10 @@ public class Client extends LightKCommandClient
 	{
 		super(ip, port, down);
 		values = new HashMap<String,String>();
+		//values.put("ctest", Math.random() + "");
 	}
 
+	
 	@Override
 	protected void disconnectedFromServer()
 	{
@@ -31,9 +33,7 @@ public class Client extends LightKCommandClient
 	@Override
 	public Object makeDownCommandData(String message) 
 	{
-		ClientCommandData data = new ClientCommandData();
-		data.setClient(this);
-		data.setValuesMap(getValuesMap());
+		ClientCommandData data = new ClientCommandData(this, getValuesMap());		
 		return data;
 	}
 
@@ -45,6 +45,24 @@ public class Client extends LightKCommandClient
 	public void setValuesMap(HashMap<String,String> values) 
 	{
 		this.values = values;
+	}
+
+	public void sendCommand(String...strings) 
+	{
+		String commandString=strings[0];
+		for(int i = 1; i < strings.length; i++)
+		{
+			commandString += "~";
+			commandString += strings[i];
+		}
+		this.sendMessage(commandString);		
+	}
+	
+	
+	public void readMessage(String s)
+	{
+		super.readMessage(s);
+		System.out.println(s);
 	}
 
 }
